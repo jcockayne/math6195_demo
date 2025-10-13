@@ -49,3 +49,27 @@ print(coef(seaIce1.lm))
 
 On average, the extent of sea ice is decreasing by `r sprintf("%.0f", -coef(seaIce1.lm)[2]*1000000)` sq km per year (about the size of Portugal)
 
+## Quadratic Modelling
+
+Now we will implement a simple quadratic model
+
+```{r}
+## fit a simple linear model, regress sea ice extent on year
+seaIce2.lm <- lm(SeaIceExtent ~ poly(Year, 2), data = seaIce)
+```
+
+Now we will plot the output of the model:
+
+```{r}
+## make predictions that we can plot
+seaIce <- seaIce |>
+    mutate(Predicted = predict(seaIce2.lm, newdata = seaIce))
+
+ggplot(seaIce, aes(x = Year, y = SeaIceExtent)) +
+    geom_point(size = 3) +
+    geom_line(aes(x=Year, y=Predicted), color="blue") +
+    scale_y_continuous(limits = c(0, 9)) +
+    labs(y = "Arctic sea ice extent (million sq km)") +
+    theme_minimal(base_size = 18)
+```
+
