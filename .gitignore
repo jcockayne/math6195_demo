@@ -47,3 +47,8 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# autogenerate files
+.DS_Store
+seaice.html
+seaice_files
