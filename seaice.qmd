@@ -54,8 +54,8 @@ On average, the extent of sea ice is decreasing by `r sprintf("%.0f", -coef(seaI
 Now we will implement a simple quadratic model
 
 ```{r}
-## fit a simple linear model, regress sea ice extent on year
-seaIce2.lm <- lm(SeaIceExtent ~ poly(Year, 2), data = seaIce)
+## fit a tenth order model to regress sea ice extent on year
+seaIce2.lm <- lm(SeaIceExtent ~ poly(Year, 10), data = seaIce)
 ```
 
 Now we will plot the output of the model:
