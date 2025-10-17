@@ -55,7 +55,7 @@ Now we will implement a simple quadratic model
 
 ```{r}
 ## fit a tenth order model to regress sea ice extent on year
-seaIce2.lm <- lm(SeaIceExtent ~ poly(Year, 10), data = seaIce)
+seaIce2.lm <- lm(SeaIceExtent ~ poly(Year, 3), data = seaIce)
 ```
 
 Now we will plot the output of the model:
